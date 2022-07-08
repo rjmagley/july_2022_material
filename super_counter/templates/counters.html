@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>click butan</h1>
+    <div>
+        <h2>counter 1</h2>
+        <p>times clicked: {{session['counter_1']}}</p>
+        <a class="button" href="/counter/1">click meh</a>
+    </div>
+    <div>
+        <h2>counter 2</h2>
+        <p>times clicked: {{session['counter_2']}}<p>
+        <a class="button" href="/counter/2">click meh</a>
+    </div>
+    <div>
+        <h2>counter 3</h2>
+        <p>times clicked: {{session['counter_3']}}<p>
+        <a class="button" href="/counter/3">click meh</a>
+    </div>
+    <div>
+        <h2>counter 4</h2>
+        <p>times clicked: {{session['counter_4']}}</p>
+        <a class="button" href="/counter/4">click meh</a>
+    </div>
+    <div>
+        <h2>counter 5</h2>
+        <p>times clicked: {{session['counter_5']}}</p>
+        <a class="button" href="/counter/5">click meh</a>
+    </div>
+    <ul>
+    {% for message in session['activity_log'] %}
+    <p>{{message}}</p>
+    {% endfor %}
+    </ul>  
+    
+
+    <a id="reset_button" href="/reset">reset the counters! begin anew!</a>
+</body>
+</html>
