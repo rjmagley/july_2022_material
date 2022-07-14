@@ -66,3 +66,24 @@ class Employee():
         query = "UPDATE employees SET first_name = %(first_name)s, middle_name = %(middle_name)s, last_name = %(last_name)s, salary = %(salary)s, department_id = %(department_id)s WHERE id = %(id)s;"
 
         connectToMySQL('july_2022_employees').query_db(query, data)
+
+    @classmethod
+    def get_employees_not_in_department(cls, data):
+
+        query = "SELECT * FROM employees WHERE department_id != %(id)s;"
+
+        results = connectToMySQL('july_2022_employees').query_db(query, data)
+
+        employees = []
+
+        for row in results:
+            employees.append(Employee(row))
+
+        return employees
+
+    @classmethod
+    def transfer_employee(cls, data):
+
+        query = "UPDATE employees SET department_id = %(department_id)s WHERE id = %(employee_id)s;"
+
+        connectToMySQL('july_2022_employees').query_db(query, data)

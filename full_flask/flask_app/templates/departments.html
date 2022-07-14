@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>departments</h1>
+
+    {% for department in departments %}
+    <h2><a href="/departments/{{department.id}}">{{department.name}}</a></h2>
+    <p>Location: {{department.location}}</p>
+    <h3>Employees: {{department.employees | length}}</h3>
+    {% if department.employees %}
+    <ul>
+        {% for employee in department.employees %}
+        <li>{{employee.full_name}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>{{department.name}} has no employees</p>
+    {% endif %}
+    {% endfor %}
+</body>
+</html>

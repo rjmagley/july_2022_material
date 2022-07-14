@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{department.name}}</h1>
+
+    <h2>Employees:</h2>
+    <ul>
+        {% for employee in department.employees %}
+        <li>{{employee.full_name}}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>transfer employee to this department</h3>
+    <form action="/departments/{{department.id}}/transfer_employee" method="POST">
+        <select name="employee_id">
+            {% for employee in employees_not_in_department %}
+            <option value="{{employee.id}}">{{employee.full_name}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+</body>
+</html>
