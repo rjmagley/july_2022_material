@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/employees/{{employee.id}}/update" method="POST">
+        First name: <input type="text" name="first_name" value="{{employee.first_name}}"><br>
+        Middle name: <input type="text" name="middle_name" value="{% if employee.middle_name != None %}{{employee.middle_name}}{% endif %}"><br>
+        Last name: <input type="text" name="last_name" value="{{employee.last_name}}"><br>
+        Salary: <input type="number" name="salary" value="{{employee.salary}}"><br>
+        Department: <select name="department_id">
+            {% for department in departments %}
+            <option value="{{department.id}}" {% if department.id == employee.department_id %} selected {% endif %}>{{department.name}}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit">
+    </form>
+</body>
+</html>

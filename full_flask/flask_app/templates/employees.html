@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>employee directory</h1>
+    <ul>
+        {% for employee in employees %}
+        <li>{{employee.full_name}} <a href="/employees/{{employee.id}}/delete">delete</a> <a href="/employees/{{employee.id}}/edit">edit</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>add new employee</h2>
+    <form action="/employees/create" method="POST">
+        First name: <input type="text" name="first_name"><br>
+        Middle name: <input type="text" name="middle_name"><br>
+        Last name: <input type="text" name="last_name"><br>
+        Salary: <input type="number" name="salary"><br>
+        Department: <select name="department_id">
+            {% for department in departments %}
+            <option value="{{department.id}}">{{department.name}}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit">
+    </form>
+</html>
